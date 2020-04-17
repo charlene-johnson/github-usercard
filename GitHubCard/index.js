@@ -96,11 +96,12 @@ function cardComponentCreator(cardData) {
   cardInfo.appendChild(location)
   
   const profile = document.createElement('p')
-  profile.textContent = `Profile: ${cardData.html_url}`
+  profile.textContent = `Profile: `
   cardInfo.appendChild(profile)
 
   const anchor = document.createElement('a')
   anchor.href = `${cardData.html_url}`
+  anchor.textContent =  `${cardData.html_url}`
   profile.appendChild(anchor)
 
   const followers = document.createElement('p')
