@@ -2,7 +2,13 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
+axios.get("https://api.github.com/users/charlene-johnson")
+  .then(response => {
+    console.log(response.data)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -53,3 +59,49 @@ const followersArray = [];
   luishrd
   bigknell
 */
+function cardComponentCreator(cards) {
+  const card = document.createElement('div')
+  card.classList.add('card')
+
+  const image = document.createElement('img')
+  card.appendChild(image)
+
+  const cardInfo = document.createElement('div')
+  cardInfo.classList.add('card-info')
+  card.appendChild(cardInfo)
+
+  const name = document.createElement('h3')
+  name.classList.add('name')
+  name.textContent = `${cards.name}`
+  cardInfo.appendChild(name)
+
+  const username = document.createElement('p')
+  username.classList.add('username')
+  username.textContent = `${cards.login}`
+  cardInfo.appendChild(username)
+
+  const location = document.createElement('p')
+  location.textContent = `Location: ${cards.location}`
+  cardInfo.appendChild(location)
+  
+  const profile = document.createElement('p')
+  profile.href = `Profile: ${cards.html_url}`
+  profile.textContent = `${cards.html_url}`
+  cardInfo.appendChild(profile)
+
+  const followers = document.createElement('p')
+  followers.textContent = `Followers: ${cards.followers_url}`
+  cardInfo.appendChild(followers)
+
+  const following= document.createElement('p')
+  following.textContent = `Following: ${cards.following_url}`
+  cardInfo.appendChild(following)
+
+  const bio = document.createElement('p')
+  bio.textContent = `Bio: ${cards.bio}`
+  cardInfo.appendChild(bio)
+
+
+  return card
+
+}
